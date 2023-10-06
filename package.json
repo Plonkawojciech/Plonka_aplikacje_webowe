@@ -1,0 +1,19 @@
+{
+  "name": "l1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plonkawojciech/Aplikacje-Webowe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Plonkawojciech/Aplikacje-Webowe/issues"
+  },
+  "homepage": "https://github.com/Plonkawojciech/Aplikacje-Webowe#readme"
+}
