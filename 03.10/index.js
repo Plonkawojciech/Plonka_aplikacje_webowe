@@ -1,3 +1,4 @@
+const { json } = require('express/lib/response')
 const { readFile, writeFile } = require('fs/promises')
 const http = require('http')
 const port = 3000
@@ -49,7 +50,7 @@ const server = http.createServer(async (req, res) => {
   
   else {
     res.statusCode = 404;
-    res.write('Error 404');
+    res.json('error');
     res.end();
   }
 })
