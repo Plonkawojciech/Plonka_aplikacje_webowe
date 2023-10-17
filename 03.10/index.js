@@ -36,7 +36,7 @@ const server = http.createServer(async (req, res) => {
   else if (url === '/dziekujemy') {
     res.statusCode = 200
     res.setHeader('Content-Type', 'text/plain')
-    res.write('jebac czrnych')
+    res.write('swieciocha tylko')
     res.end()
   } 
   
