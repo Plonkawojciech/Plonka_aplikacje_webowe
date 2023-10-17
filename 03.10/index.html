@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/kontakt" method="POST">
-        <textarea name="text" cols="30" rows="10"></textarea>
-        <input type="submit" value="wyślij">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formularz konaktowy</title>
+  </head>
+  <body>
+    <h1>Formularz kontaktowy</h1>
+    <form action="/kontakt" method="post">
+      <textarea
+        name="message"
+        rows="4"
+        cols="50"
+        placeholder="Wpisz swoją wiadomość"
+      ></textarea>
+      <br />
+      <input type="submit" value="Wyślij" />
     </form>
-</body>
+  </body>
 </html>
