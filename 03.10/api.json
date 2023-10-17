@@ -1,7 +1,11 @@
-{
-  "Wojtek": "Płonka",
-  "Czompik": "Piotr",
-  "bigtor": "Halke",
-  "Żak": "Jeziorak",
-  "friday": "Pitek
-}
+[
+  {
+    "wojtek":"plonka"
+  },
+  {
+    "Czompik": "Piotr",
+  },
+  {
+    "bigtor": "Halke"
+  }
+]
