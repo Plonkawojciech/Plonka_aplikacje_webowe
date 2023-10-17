@@ -50,7 +50,7 @@ const server = http.createServer(async (req, res) => {
   
   else {
     res.statusCode = 404;
-    res.json('error');
+    res.json({error :'error'});
     res.end();
   }
 })
