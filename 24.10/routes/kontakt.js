@@ -1,20 +1,27 @@
 import express from 'express'
+import { createConnection } from 'mysql'
+import { databaseCredentials } from '../globals/mysql.js'
 
 const router = express.Router()
 
-router
-  .route('/')
-  .get((req, res) => {
-    res.render('kontakt')
+router.get('/', (req, res) => {
+  res.render('kontakt')
+})
+
+router.post('/', (req, res) => {
+  const { name, email, radio, message } = req.body
+  console.log(name, email, radio, message)
+
+  const connection = createConnection(databaseCredentials)
+  connection.connect((err) => {
+    if (err) throw err
+    const sql = `INSERT INTO messages (name, email, radio, message) VALUES ('${name}', '${email}', '${radio}', '${message}')`
+    connection.query(sql, (err, result) => {
+      if (err) throw err
+      console.log('1 reciord inserted')
+    })
   })
-  .post((req, res) => {
-    console.log(
-      `${req.body.name}
-       ${req.body.email}
-       ${req.body.number}
-       ${req.body.textarea}`
-    )
-    res.redirect('./')
-  })
+  res.redirect('/')
+})
 
 export default router
