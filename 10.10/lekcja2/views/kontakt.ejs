@@ -6,14 +6,14 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>kontakt</h1>
-    <form action="/kontakt" method="POST" class="form">
-      <input type="text" name="text" id="" /><br />
-      <input type="email" name="email" id="" /><br />
-      <input type="number" name="number" min="2" id="" /><br />
-      <textarea name="textarea" id="" cols="30" rows="10"></textarea><br />
-      <input type="submit" value="send" />
+    <form action="/kontakt" method="post">
+      <label for="name">Imie</label>
+      <input type="text" name="name" id="name" /><br />
+      <label for="email">email</label>
+      <input type="text" name="emain" id="email" /><br /><br />
+      <textarea name="" id="" cols="30" rows="10"></textarea><br /><br />
+      <input class="submit" type="submit" value="send" />
     </form>
-    <script src="public/preventSending.js"></script>
+    <script src="../public/preventSending.js"></script>
   </body>
 </html>
