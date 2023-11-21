@@ -8,6 +8,12 @@ const insertOneData = async (collection, data) => {
   try {
     const db = await MongoClient.connect(url)
     const dbo = await db.db('mydb_web')
+    const filteredData = {}
+    for (const key in data) {
+      if (data[key] !== undefined) {
+        filteredData[key] = data[key]
+      }
+    }
     await dbo.collection(collection).insertOne(data)
     db.close()
   } catch (e) {
@@ -15,12 +21,17 @@ const insertOneData = async (collection, data) => {
   }
 }
 
-const displayData = async (collection) => {
+const displayData = async (collection, params = []) => {
   try {
     const db = await MongoClient.connect(url)
     const dbo = await db.db('mydb_web')
+    let result
+    if (!params || params.length === 0) {
+      result = await dbo.collection(collection).find().toArray()
+    } else {
+      result = await dbo.collection(collection).findOne(params)
+    }
 
-    const result = await dbo.collection(collection).findOne()
     db.close()
     return result
   } catch (e) {
