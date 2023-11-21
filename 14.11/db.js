@@ -15,6 +15,20 @@ const insertOneData = async (collection, data) => {
   }
 }
 
+const displayData = async (collection) => {
+  try {
+    const db = await MongoClient.connect(url)
+    const dbo = await db.db('mydb_web')
+
+    const result = await dbo.collection(collection).findOne()
+    db.close()
+    return result
+  } catch (e) {
+    throw e
+  }
+}
+
 export const db = {
   insertOneData,
+  displayData,
 }
