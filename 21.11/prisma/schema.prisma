@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  name    String
+  surname String
+  email   String
+  posts   Post[]
+  profile Profile?
+}
+
+model Post {
+  id        Int         @id @default(autoincrement())
+  tiitle    String
+  constent  String
+  authorId  Int
+  author    User        @relation(fields: [userId], references: [id])
+  userId    Int
+  tags      Tag[]       @relation("PostToTag")
+  tagId     Int?
+  PostToTag PostToTag[]
+  category  Category[]
+}
+
+model Tag {
+  id        Int         @id @default(autoincrement())
+  name      String
+  Post      Post?       @relation("PostToTag", fields: [postId], references: [id])
+  postId    Int?
+  PostToTag PostToTag[]
+}
+
+model PostToTag {
+  postId Int
+  tagId  Int
+
+  post Post @relation(fields: [postId], references: [id])
+  tag  Tag  @relation(fields: [tagId], references: [id])
+
+  @@id([postId, tagId])
+}
+
+model Category {
+  id     Int    @id @default(autoincrement())
+  name   String
+  postId Int
+  Post   Post   @relation(fields: [postId], references: [id])
+}
+
+model Profile {
+  id     Int  @id @default(autoincrement())
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
+}
