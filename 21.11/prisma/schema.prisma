@@ -11,12 +11,22 @@ datasource db {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  name    String
-  surname String
-  email   String
-  posts   Post[]
-  profile Profile?
+  id       Int      @id @default(autoincrement())
+  username String   @unique
+  email    String   @unique
+  posts    Post[]
+  profile  Profile?
+}
+
+model Profile {
+  id          Int    @id @default(autoincrement())
+  user        User   @relation(fields: [userId], references: [id])
+  userId      Int    @unique
+  displayName String
+  bio         String
+  status      String
+  avatarUrl   String
+  bannerUrl   String
 }
 
 model Post {
@@ -55,10 +65,4 @@ model Category {
   name   String
   postId Int
   Post   Post   @relation(fields: [postId], references: [id])
-}
-
-model Profile {
-  id     Int  @id @default(autoincrement())
-  user   User @relation(fields: [userId], references: [id])
-  userId Int  @unique
 }
