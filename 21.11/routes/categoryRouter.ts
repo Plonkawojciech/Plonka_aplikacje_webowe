@@ -15,12 +15,11 @@ categoryRouter.get('/', async (req, res) => {
 
 categoryRouter.post('/', async (req, res) => {
   try {
-    const { name, postId, Post } = req.body
+    const { name, postId } = req.body
     const newUser = await prisma.category.create({
       data: {
         name,
         postId,
-        Post,
       },
     })
     res.json(newUser)
@@ -31,14 +30,13 @@ categoryRouter.post('/', async (req, res) => {
 
 categoryRouter.put('/:id', async (req, res) => {
   const categoryId = Number(req.params.id)
-  const { name, postId, Post } = req.body
+  const { name, postId } = req.body
   try {
     const updateUser = await prisma.category.update({
       where: { id: categoryId },
       data: {
         name,
         postId,
-        Post,
       },
     })
     res.json(updateUser)
@@ -49,7 +47,7 @@ categoryRouter.put('/:id', async (req, res) => {
 
 categoryRouter.delete('/:id', async (req, res) => {
   const categoryId = Number(req.params.id)
-  const { name, postId, Post } = req.body
+  const { name, postId } = req.body
   try {
     const deleteUser = await prisma.category.delete({
       where: { id: categoryId },

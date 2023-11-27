@@ -15,13 +15,11 @@ tagRouter.get('/', async (req, res) => {
 
 tagRouter.post('/', async (req, res) => {
   try {
-    const { name, Post, postId, PostToTag } = req.body
+    const { name, postId } = req.body
     const newUser = await prisma.tag.create({
       data: {
         name,
-        Post,
         postId,
-        PostToTag,
       },
     })
     res.json(newUser)
@@ -32,15 +30,13 @@ tagRouter.post('/', async (req, res) => {
 
 tagRouter.put('/:id', async (req, res) => {
   const tagId = Number(req.params.id)
-  const { name, Post, postId, PostToTag } = req.body
+  const { name, postId } = req.body
   try {
     const updateUser = await prisma.tag.update({
       where: { id: tagId },
       data: {
         name,
-        Post,
         postId,
-        PostToTag,
       },
     })
     res.json(updateUser)
@@ -51,7 +47,6 @@ tagRouter.put('/:id', async (req, res) => {
 
 tagRouter.delete('/:id', async (req, res) => {
   const tagId = Number(req.params.id)
-  const { name, Post, postId, PostToTag } = req.body
   try {
     const deleteUser = await prisma.tag.delete({
       where: { id: tagId },

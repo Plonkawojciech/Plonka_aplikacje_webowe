@@ -15,13 +15,12 @@ userRouter.get('/', async (req, res) => {
 
 userRouter.post('/', async (req, res) => {
   try {
-    const { username, email, posts, profile } = req.body
+    const { username, email } = req.body
+    console.log(username, email)
     const newUser = await prisma.user.create({
       data: {
         username,
         email,
-        posts,
-        profile,
       },
     })
     res.json(newUser)
@@ -32,15 +31,13 @@ userRouter.post('/', async (req, res) => {
 
 userRouter.put('/:id', async (req, res) => {
   const userId = Number(req.params.id)
-  const { username, email, posts, profile } = req.body
+  const { username, email } = req.body
   try {
     const updateUser = await prisma.user.update({
       where: { id: userId },
       data: {
         username,
         email,
-        posts,
-        profile,
       },
     })
     res.json(updateUser)
@@ -51,7 +48,6 @@ userRouter.put('/:id', async (req, res) => {
 
 userRouter.delete('/:id', async (req, res) => {
   const userId = Number(req.params.id)
-  const { username, email, posts, profile } = req.body
   try {
     const deleteUser = await prisma.user.delete({
       where: { id: userId },
