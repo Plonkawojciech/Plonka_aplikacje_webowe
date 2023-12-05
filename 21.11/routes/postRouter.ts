@@ -43,6 +43,18 @@ postRouter.post('/', async (req, res) => {
   }
 })
 
+postRouter.get('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    const uniquePost = await prisma.user.findUnique({
+      where: { id },
+    })
+    res.json(uniquePost)
+  } catch (error) {
+    throw error
+  }
+})
+
 postRouter.put('/:id', async (req, res) => {
   const postId = Number(req.params.id)
   const {

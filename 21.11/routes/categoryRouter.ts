@@ -28,6 +28,18 @@ categoryRouter.post('/', async (req, res) => {
   }
 })
 
+categoryRouter.get('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    const uniqueCategory = await prisma.user.findUnique({
+      where: { id },
+    })
+    res.json(uniqueCategory)
+  } catch (error) {
+    throw error
+  }
+})
+
 categoryRouter.put('/:id', async (req, res) => {
   const categoryId = Number(req.params.id)
   const { name, postId } = req.body

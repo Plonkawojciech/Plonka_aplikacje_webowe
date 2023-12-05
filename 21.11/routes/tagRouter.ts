@@ -28,6 +28,18 @@ tagRouter.post('/', async (req, res) => {
   }
 })
 
+tagRouter.get('/:id', async (req, res) => {
+  const tagId = Number(req.params.id)
+  try {
+    const uniqueTag = await prisma.user.findUnique({
+      where: { id: tagId },
+    })
+    res.json(uniqueTag)
+  } catch (error) {
+    throw error
+  }
+})
+
 tagRouter.put('/:id', async (req, res) => {
   const tagId = Number(req.params.id)
   const { name, postId } = req.body

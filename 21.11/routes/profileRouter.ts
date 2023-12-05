@@ -12,6 +12,17 @@ profileRouter.get('/', async (req, res) => {
     throw error
   }
 })
+profileRouter.get('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    const uniqueProfile = await prisma.user.findUnique({
+      where: { id },
+    })
+    res.json(uniqueProfile)
+  } catch (error) {
+    throw error
+  }
+})
 
 profileRouter.post('/', async (req, res) => {
   try {
