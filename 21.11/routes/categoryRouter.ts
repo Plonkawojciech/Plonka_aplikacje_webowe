@@ -32,7 +32,7 @@ categoryRouter.get('/:id', async (req, res) => {
   const id = Number(req.params.id)
   try {
     const uniqueCategory = await prisma.user.findUnique({
-      where: { id },
+      where: {  id },
     })
     res.json(uniqueCategory)
   } catch (error) {

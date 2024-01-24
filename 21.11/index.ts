@@ -20,5 +20,6 @@ app.use('/post', postRouter)
 app.use('/category', categoryRouter)
 
 app.listen(PORT, () => {
-  console.log('app running')
+  console.log('server is listening on port 3000')
 })
+

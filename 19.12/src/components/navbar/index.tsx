@@ -1,18 +1,18 @@
 import {Link} from "react-router-dom";
+import {routes} from "../../helpers/routes.tsx";
 
 function Navbar() {
     return(
         <nav>
             <ul>
-                <li>
-                    <Link to='/'>Homepage</Link>
-                </li>
-                <li>
-                    <Link to='/About'>About</Link>
-                </li>
+                {routes.map((route) => (
+                    <li key={route.path}>
+                        <Link to={route.path}>{route.name}</Link>
+                    </li>
+                ))}
             </ul>
         </nav>
-)
+    )
 }
 
 export default Navbar

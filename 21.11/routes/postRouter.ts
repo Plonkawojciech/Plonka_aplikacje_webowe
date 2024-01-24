@@ -15,16 +15,7 @@ postRouter.get('/', async (req, res) => {
 
 postRouter.post('/', async (req, res) => {
   try {
-    const {
-      tiitle,
-      constent,
-      authorId,
-      author,
-      userId,
-      tagId,
-      PostToTag,
-      category,
-    } = req.body
+    const {tiitle, constent, authorId, author, userId, tagId, PostToTag, category,} = req.body
     const newUser = await prisma.post.create({
       data: {
         tiitle,

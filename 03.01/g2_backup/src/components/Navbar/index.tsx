@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav>
       <ul>
-        {routes.map((route) => (
+        {routes.filter((route) => !route.hideInMenu).map((route) => (
           <li key={route.path}>
             <Link to={route.path}>{route.name}</Link>
           </li>

@@ -20,3 +20,12 @@ app.use('/api', apiRouter)
 app.listen(PORT, () => {
   console.log(`server running at port: ${PORT}`)
 })
+
+
+
+CRUD
+
+create
+Read
+update
+delete
