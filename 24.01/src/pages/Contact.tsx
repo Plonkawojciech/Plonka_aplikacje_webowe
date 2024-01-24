@@ -1,7 +1,28 @@
+import { useNavigate } from 'react-router-dom'
+
 const Contact = () => {
+  const navigate = useNavigate()
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    console.log(e)
+    const { email, topic, agreement, message } = {
+      email: e.target[0].value,
+      topic: e.target[1].value,
+      agreement: e.target[2].checked,
+      message: e.target[3].value,
+    }
+    console.log(email, topic, agreement, message)
+    navigate('/send')
+  }
+
   return (
     <>
-      <form action='post' className='max-w-md mx-auto my-8'>
+      <form
+        action='post'
+        className='max-w-md mx-auto my-8'
+        onSubmit={(e) => handleSubmit(e)}
+      >
         <label
           htmlFor='email'
           className='block text-sm font-medium text-white-700'
@@ -58,11 +79,7 @@ const Contact = () => {
         ></textarea>
         <br />
 
-        <button
-          type='submit'
-          className='mt-4 bg-blue-500 text-white px-4 py-2 rounded-md'
-          onClick={}
-        >
+        <button className='mt-4 bg-blue-500 text-white px-4 py-2 rounded-md'>
           Send
         </button>
       </form>
